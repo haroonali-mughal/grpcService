@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package pb;
+
+service Vault {
+      rpc Hash(HashRequest) returns (HashResponse) {}
+      rpc Validate(ValidateRequest) returns (ValidateResponse){}
+}
+
+message HashRequest {
+      repeated string password = 1;
+}
+
+message HashResponse {
+      repeated string hash = 1;
+      string err = 2;
+}
+
+message ValidateRequest {
+      repeated string password = 1;
+      repeated string hash = 2;
+}
+
+message ValidateResponse {
+      bool valid = 1;
+}
